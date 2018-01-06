@@ -3,102 +3,53 @@
 
 
 var CLIENT_SECRET = 'AIzaSyBZvcs4S4_z1xqIkE1YXEe5CsVn7c4JMBA';
+var fireBaseSecret = 'AIzaSyBryO5_5WW7VWqa8u1J1OGOzYwBGOJFAuM';
+var dataBase = '';
+
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBryO5_5WW7VWqa8u1J1OGOzYwBGOJFAuM",
+    authDomain: "projectone-a74f4.firebaseapp.com",
+    databaseURL: "https://projectone-a74f4.firebaseio.com",
+    projectId: "projectone-a74f4",
+    storageBucket: "projectone-a74f4.appspot.com",
+    messagingSenderId: "1077113356205"
+  };
+  firebase.initializeApp(config);
+
+ // Get a reference to the database service
+  var db = firebase.database();
+  var dataBase = db.ref().child('bars');
 
 
-// https://open.fda.gov/food/enforcement/
-$(document).ready(function(){})
-$(document).on('click', '.btn', function(){
-  var city = $(".form-control").val().trim();
-  console.log(city);
-  console.log(CLIENT_SECRET);
-  var queryURL = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=bars+in+'+ city + '&key=' + CLIENT_SECRET;
 
-  // var queryURL = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+Sydney&key=' + CLIENT_SECRET;
-  console.log(queryURL);
+ var barName = 'Theater';
+ var address = '1807 Telegraph Avenue';
+ var openNow = 0;
+ var favorite = 1;
 
-  $.ajax({
-    crossOrigin: true,
-    type: 'GET',
-    url: queryURL,
-    // cache: false,
-    // async: false,
-    // jsonpCallback: 'onNowCallback',
-    // jsonpCallback: 'onNowCallback',
-    // jsonp: 'callback',
-    contentType: "",
-    dataType: 'jsonp',
-    success: function (data) {
-      console.log(data)
-      console.log(JSON.stringify(data));
-    },
-    error: function (e) {
-        console.log(e.message);
-    }
+ writeUserData();
+ readUserDate();
+
+
+function writeUserData() {
+  dataBase.push({
+    barName: barName,
+    openNow: openNow,
+    favorite : favorite
   });
+}
 
+function readUserDate(){
+	dataBase.on("value", function(snapshot){
+		console.log(snapshot.val());
+	}, function(errorObject){
+		console.log("error reading db" + errorObject.code);
+	});
+}
 
-  // $.ajax({
-  //   url: queryURL,
-  //   headers: {
-  //       'Content-Type': '	application/json; charset=UTF-8'
-  //   },
-  //   // contentType: "application/json",
-  //   type: "GET", 
-  //   async: false,
-  //   dataType: "JSONP",
-  //   jsonpCallback: 'jsonCallback',
-  //   success: function (result) {
-  //       console.log(result);
-  //   },
-  //   error: function () {
-  //       console.log("error");
-  //   }
-  // });
+// do select query based on favorite bars and populate trending bars  frentend 
+function trendingBars(){
+	// dataBase.on()
+}
 
-
-
-    // $.ajax({
-    //   url: queryURL,
-    //   headers: {
-    //     'Content-Type': 'application/x-www-form-urlencoded'
-    // },
-    //   type: "GET",
-    //   dataType: "json",
-    //   data:{},
-    // }).done(function(response){
-    //   console.log(response.html_attributions.results);
-    //   // alert("hello")
-    //   var result = (JSON.stringify(response.results));
-    //   console.log(result);
-    //   $(".form-control").text(JSON.stringify(response.results));
-      
-    // });
-    event.preventDefault();
-    
-});
-
-
-
-
-
-// $(document).ready(function () {
-//   $.ajax({
-//   type: 'GET',
-//   url: 'https://maps.googleapis.com/maps/api/place/searc/json?location=-33.8670522,151.1957362&radius=500&types=food&name=harbour&sensor=false&key='my_google_places_key';',
-//   async: false,
-//   jsonpCallback: 'jsonCallback',
-//   contentType: "application/json",
-//   dataType: 'jsonp',
-//   success: function (data) {
-//     console.log(data);
-//   //      for (i = 0; i < data.results.length; i++) {
-//   //     myAddress[i] = data.results[i].formatted_address;
-//   //     document.getElementById("message").innerHTML += myAddress[i] + "<br>";
-//   //     console.log(myAddress[i]);
-//   // };
-//   },
-//   error: function (e) {
-//       console.log(e.message);
-//   }
-// });
-// }); 
