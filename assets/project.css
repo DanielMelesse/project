@@ -1,0 +1,14 @@
+.mainPage{
+    margin: 20%;
+}
+
+form{
+    text-align: center;
+}
+
+.footer{
+    background-color: darkgray;
+    height: 100px;
+    text-align: center;
+    color: rgb(56, 65, 187);
+}
