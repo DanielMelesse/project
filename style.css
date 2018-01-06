@@ -1,7 +1,46 @@
+body{
+	background-image:url("assets/img/slide2.jpg");
+	background-color: black;
+}
 
-table{
+
+h2, p{
+	color: white;
+	text-align:center;
+	margin-top: 10px;
+}
+
+td{
+	background-color: white;
+}
+
+#location-form{
+	width: 100%;
+}
+
+.shot{
+background-color: #d3d3d3;
+height: 20px;
+width: 20px;
+border-radius: 5px;
+}
+
+#results{
 	width:100%;
 	margin-bottom: 20px;
+	overflow-y:scroll; 
+	height:500px;"
+}
+
+#table{
+	width:100%;
+	margin-bottom: 20px;
+	overflow-y:scroll; 
+	height:500px;
+	padding-top: 10px;
+	border-radius: 5px;
+	
+
 }
 
 .container{
@@ -19,6 +58,10 @@ td{
 	text-align: center;
 }
 
+#map{
+	margin: 10px 0px 10px 0px;
+}
+
 .jumbotron{
 	text-align: center;
 	margin-bottom: 10px;
@@ -30,20 +73,55 @@ td{
 	margin-bottom:10px;
 }
 
+#hideList{
+	border-radius: 5px;
+	width:75px;
+	float:right;
+	margin:5px;
+	font-size: 70%;
+}
+
+#favoritelist{
+	float: left;
+	width:100%;
+	text-align: 
+}
+
 input{
 	width:100%;
 }
 
 #list{
-	
+	background-color: white;
+	width: 50%;
+	height: 400px;
+	overflow-y: scroll;
+	position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin:25px;
+    padding: 25px;
+    border: 1px solid black;
+    border-radius: 10px;
+    
 }
+.listhead{
+	font-size: 75%;
+}
+ h4{
+ 	width:75%;
+ 	float: left;
+ 	margin:0px;
+ }
 
 .carousel{
-width: 100%;
-text-align: center;
+	width: 100%;
+	text-align: center;
 }
 
 #map{
-	height: 500px;
+	height: 200px;
+	border-radius: 5px;
 	width:500px;
 }
