@@ -7,6 +7,12 @@ var config = {
 	messagingSenderId: "930932591042"
 };
 
+
+
+$("#list").hide();
+
+
+
 firebase.initializeApp(config);
 
 var db = firebase.database().ref();
@@ -30,43 +36,8 @@ db.on("child_added", function(snapshot) {
 	tdOpen.html(snapshot.val().Open);
 	i.append(tdOpen);
 
-
 	$("#bars").append(i);
 });
-
-
-	
-	// var Name = $("#Train-Name").val().trim();
-	// var Destination = $("#Destination").val().trim();
-	// var FirstTime = $("#Time").val().trim();
-	// var Frequency = $("#Frequency").val().trim();
-	// var firstTimeConverted = moment(FirstTime, "hh:mm").subtract(1, "years");
-	// var currentTime = moment();
-	// var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-	// var tRemainder = diffTime % Frequency;
-	// var minutesTillTrain = Frequency - tRemainder;
-	// var nextTrain = moment().add(minutesTillTrain, "minutes");
-	// var nextTrainFormatted = moment(nextTrain).format("hh:mm");
-	// var zipcode = $(".active").val();
-	// console.log(zipcode);
-	// console.log(typeof(zipcode));
-
-	// db.push({
-	// 	Name: Name,
-	// 	Destination: Destination,
-	// 	FirstTime: FirstTime,
-	// 	Frequency: Frequency,
-	// 	Arrival: nextTrainFormatted,
-	// 	Away: minutesTillTrain
-	// });
-
-	// alert("Your train has been addded!");
-
-	// $("#trainForm").children('input').val('');
-	
-
-
-
 
 //eitien's code here
  // Call Geocode
@@ -79,6 +50,8 @@ db.on("child_added", function(snapshot) {
     locationForm.addEventListener('submit', geocode);
 
     function geocode(e){
+
+      
       // Prevent actual submit
       e.preventDefault();
 
@@ -99,7 +72,7 @@ db.on("child_added", function(snapshot) {
             <td class="vacinity">${place.vicinity}</td>
             <td class="open">${place.opening_hours ? place.opening_hours.open_now ? "Yes" : "No" : "Unknown"}</td>
             <td>
-              <button class="shot">SHOT</button>
+              <button class="shot"></button>
             </td>
             </tr>
             `;
@@ -114,15 +87,13 @@ db.on("child_added", function(snapshot) {
             });
           }
 
-
- 	
-          var tableOutput = `<table class="table">
+          var tableOutput = `<table id="results" class="table">
           <thead>
           <tr>
           <th scope="col">Bar Name</th>
           <th scope="col">Address</th>
           <th scope="col">Open Now?</th>
-          <th scope="col">Try a shot here?</th>
+          <th scope="col">Add to favorites?</th>
           </tr>
           </thead>
           <tbody>
@@ -172,11 +143,18 @@ db.on("child_added", function(snapshot) {
 
     }
 
-function Push(){
-	var zip = $("#location-input").val();
-	
-	console.log(name);
-};
+
+$(document).on('click','#showList',function(){
+
+  $("#list").toggle();
+
+  });
+
+$(document).on('click','#hideList',function(){
+
+  $("#list").toggle();
+
+  });
 
 $(document).on('click','.shot',function(){
 
@@ -195,11 +173,62 @@ $(document).on('click','.shot',function(){
     console.log(open);
 
     db.push({
-	Name: name,
-	Address: info,
-	Zipcode: zip,
-	Open: open
+    	Name: name,
+    	Address: info,
+    	Zipcode: zip,
+    	Open: open
 	});
 
+});
+
+// SF Neighborhoods images
+
+var imageArray = [
+  "assets/img/alamoSquare.jpeg","assets/img/BernalHeights.jpeg",
+    "assets/img/castro.jpeg", "assets/img/embarcadero.jpeg",
+    "assets/img/fillmoreDistrict.jpeg", "assets/img/fishermanWharf.jpeg",
+    "assets/img/goldenGatePark.jpeg", "assets/img/haightAshury.jpeg"
+    // "assets/img/hayesValley.jpeg","assets/img/huntersPoint.jpeg",
+    // "assets/img/japanTown.jpeg", "assets/img/marinaDistrict.jpeg"
+    // "assets/img/marinaDistrict.jpeg", "assets/img/nobHill.jpeg",
+    // "assets/img/noeValley.jpeg", "assets/img/northBeach.jpeg",
+    // "assets/img/pacificheights.jpeg", "assets/img/potreroHill.jpeg",
+    // "assets/img/presidio.jpeg", "assets/img/russianHill.jpeg",
+    // "assets/img/southOfMarket.jpeg", "assets/img/tenderloin.jpeg",
+    // "assets/img/treasureIsland.jpeg", "assets/img/twinPeaks.jpeg",
+    // "assets/img/unionSquare.jpeg"
+];
+
+$(document).ready(function(){
+
+
+  function newRandomIame(){
+      // get random SF Neighborhoods image.
+      var randomItem = imageArray[Math.floor(Math.random()*imageArray.length)];
+      var img = $("<img>");
+      var div = $("<div>");
+      img.attr("class",  'imageone');
+      img.attr("src",randomItem )
+      div.prepend(img)
+      $("#image").append(div);
+  };
+
+  // making function call
+  newRandomIame();
+
+// query animate move 
+var right = function(){
+  newRandomIame();
+  $(".imageone").animate({ "left": "100%" }, 4000, left );
+
+}
+// still might need more work.. it should only move only one image at time
+var left = function(){
+  newRandomIame();
+  $(".imageone").animate({ "left": "500px" }, 4000, right );
+  
+}
+
+right();
 
 });
