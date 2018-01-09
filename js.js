@@ -145,16 +145,23 @@ db.on("child_added", function(snapshot) {
 
 
 $(document).on('click','#showList',function(){
+  alert("search")
 
-  $("#list").toggle();
+  // 
+  $('#map').slideUp(3000);
+  $('#table').slideUp(3000);
+
+  $("#list").slideDown(3000);
 
   });
 
 $(document).on('click','#hideList',function(){
-
-  $("#list").toggle();
-
+  // $("#location-input").val('');
+  $("#list").slideUp(3000);
+  $('#map').slideDown(3000);
+  $('#table').slideDown(3000);
   });
+  
 
 $(document).on('click','.shot',function(){
 
@@ -187,48 +194,48 @@ var imageArray = [
   "assets/img/alamoSquare.jpeg","assets/img/BernalHeights.jpeg",
     "assets/img/castro.jpeg", "assets/img/embarcadero.jpeg",
     "assets/img/fillmoreDistrict.jpeg", "assets/img/fishermanWharf.jpeg",
-    "assets/img/goldenGatePark.jpeg", "assets/img/haightAshury.jpeg"
-    // "assets/img/hayesValley.jpeg","assets/img/huntersPoint.jpeg",
-    // "assets/img/japanTown.jpeg", "assets/img/marinaDistrict.jpeg"
-    // "assets/img/marinaDistrict.jpeg", "assets/img/nobHill.jpeg",
-    // "assets/img/noeValley.jpeg", "assets/img/northBeach.jpeg",
-    // "assets/img/pacificheights.jpeg", "assets/img/potreroHill.jpeg",
-    // "assets/img/presidio.jpeg", "assets/img/russianHill.jpeg",
-    // "assets/img/southOfMarket.jpeg", "assets/img/tenderloin.jpeg",
-    // "assets/img/treasureIsland.jpeg", "assets/img/twinPeaks.jpeg",
-    // "assets/img/unionSquare.jpeg"
+    "assets/img/goldenGatePark.jpeg", "assets/img/haightAshury.jpeg",
+    "assets/img/hayesValley.jpeg","assets/img/huntersPoint.jpeg",
+    "assets/img/japanTown.jpeg", "assets/img/marinaDistrict.jpeg",
+    "assets/img/marinaDistrict.jpeg", "assets/img/nobHill.jpeg",
+    "assets/img/noeValley.jpeg", "assets/img/northBeach.jpeg",
+    "assets/img/pacificheights.jpeg", "assets/img/potreroHill.jpeg",
+    "assets/img/presidio.jpeg", "assets/img/russianHill.jpeg",
+    "assets/img/southOfMarket.jpeg", "assets/img/tenderloin.jpeg",
+    "assets/img/treasureIsland.jpeg", "assets/img/twinPeaks.jpeg",
+    "assets/img/unionSquare.jpeg"
 ];
 
-$(document).ready(function(){
+// $(document).ready(function(){
 
 
-  function newRandomIame(){
-      // get random SF Neighborhoods image.
-      var randomItem = imageArray[Math.floor(Math.random()*imageArray.length)];
-      var img = $("<img>");
-      var div = $("<div>");
-      img.attr("class",  'imageone');
-      img.attr("src",randomItem )
-      div.prepend(img)
-      $("#image").append(div);
-  };
+//   function newRandomIame(){
+//       // get random SF Neighborhoods image.
+//       var randomItem = imageArray[Math.floor(Math.random()*imageArray.length)];
+//       var img = $("<img>");
+//       var div = $("<div>");
+//       img.attr("class",  'imageone');
+//       img.attr("src",randomItem )
+//       div.prepend(img)
+//       $("#image").append(div);
+//   };
 
-  // making function call
-  newRandomIame();
+//   // making function call
+//   newRandomIame();
 
-// query animate move 
-var right = function(){
-  newRandomIame();
-  $(".imageone").animate({ "left": "100%" }, 4000, left );
+// // query animate move 
+// var right = function(){
+//   newRandomIame();
+//   $(".imageone").animate({ "left": "100%" }, 4000, left );
 
-}
-// still might need more work.. it should only move only one image at time
-var left = function(){
-  newRandomIame();
-  $(".imageone").animate({ "left": "500px" }, 4000, right );
+// }
+// // still might need more work.. it should only move only one image at time
+// var left = function(){
+//   newRandomIame();
+//   $(".imageone").animate({ "left": "500px" }, 4000, right );
   
-}
+// }
 
-right();
+// right();
 
-});
+// });
