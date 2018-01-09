@@ -18,7 +18,7 @@ firebase.initializeApp(config);
 var db = firebase.database().ref();
 
 db.on("child_added", function(snapshot) {
-	console.log("child_added", snapshot.val());
+	// console.log("child_added", snapshot.val());
 	var i = $("<tr>");
 	var tdName = $("<td>");
 	tdName.html(snapshot.val().Name);
@@ -154,7 +154,7 @@ $(document).on('click','#showList',function(){
   });
 
 $(document).on('click','#hideList',function(){
-  // $("#location-input").val('');
+  $("#location-input").val('');
   $("#list").slideUp(3000);
   $('#map').slideDown(3000);
   $('#table').slideDown(3000);
