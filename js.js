@@ -198,36 +198,36 @@ var imageArray = [
     "assets/img/unionSquare.jpeg"
 ];
 
-$(document).ready(function(){
+// $(document).ready(function(){
 
 
-  function newRandomIame(){
-      // get random SF Neighborhoods image.
-      var randomItem = imageArray[Math.floor(Math.random()*imageArray.length)];
-      var img = $("<img>");
-      var div = $("<div>");
-      img.attr("class",  'imageone');
-      img.attr("src",randomItem )
-      div.prepend(img)
-      $("#image").append(div);
-  };
+//   function newRandomIame(){
+//       // get random SF Neighborhoods image.
+//       var randomItem = imageArray[Math.floor(Math.random()*imageArray.length)];
+//       var img = $("<img>");
+//       var div = $("<div>");
+//       img.attr("class",  'imageone');
+//       img.attr("src",randomItem )
+//       div.prepend(img)
+//       $("#image").append(div);
+//   };
 
-  // making function call
-  newRandomIame();
+//   // making function call
+//   newRandomIame();
 
-// query animate move 
-var right = function(){
-  newRandomIame();
-  $(".imageone").animate({ "left": "100%" }, 4000, left );
+// // query animate move 
+// var right = function(){
+//   newRandomIame();
+//   $(".imageone").animate({ "left": "100%" }, 4000, left );
 
-}
-// still might need more work.. it should only move only one image at time
-var left = function(){
-  newRandomIame();
-  $(".imageone").animate({ "left": "100%" }, 4000, right );
+// }
+// // still might need more work.. it should only move only one image at time
+// var left = function(){
+//   newRandomIame();
+//   $(".imageone").animate({ "left": "100%" }, 4000, right );
   
-}
+// }
 
-right();
+// right();
 
-});
+// });
