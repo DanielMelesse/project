@@ -45,6 +45,7 @@ border-radius: 5px;
 }
 
 .container{
+	margin-top: 50px;
 	width:75%;
 	height: auto;
 }
