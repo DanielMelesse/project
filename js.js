@@ -138,15 +138,13 @@ db.on("child_added", function(snapshot) {
 
       })
       .catch(function(error){
-        console.log(error);
+        // console.log(error);
       });
 
     }
 
 
 $(document).on('click','#showList',function(){
-  alert("search")
-
   // 
   $('#map').slideUp(3000);
   $('#table').slideUp(3000);
@@ -166,19 +164,13 @@ $(document).on('click','#hideList',function(){
 $(document).on('click','.shot',function(){
 
 	var zip = $("#location-input").val();
-	console.log(zip);
 
     var name = $(this).closest("tr").find('th').text();
-    console.log(name);
    
     var info = $(this).closest("tr").children('td:first').text();
-    
-    console.log(info);
-
+  
     var open = $(this).closest("tr").children('td:nth-child(3)').text();
     
-    console.log(open);
-
     db.push({
     	Name: name,
     	Address: info,
@@ -206,36 +198,36 @@ var imageArray = [
     "assets/img/unionSquare.jpeg"
 ];
 
-// $(document).ready(function(){
+$(document).ready(function(){
 
 
-//   function newRandomIame(){
-//       // get random SF Neighborhoods image.
-//       var randomItem = imageArray[Math.floor(Math.random()*imageArray.length)];
-//       var img = $("<img>");
-//       var div = $("<div>");
-//       img.attr("class",  'imageone');
-//       img.attr("src",randomItem )
-//       div.prepend(img)
-//       $("#image").append(div);
-//   };
+  function newRandomIame(){
+      // get random SF Neighborhoods image.
+      var randomItem = imageArray[Math.floor(Math.random()*imageArray.length)];
+      var img = $("<img>");
+      var div = $("<div>");
+      img.attr("class",  'imageone');
+      img.attr("src",randomItem )
+      div.prepend(img)
+      $("#image").append(div);
+  };
 
-//   // making function call
-//   newRandomIame();
+  // making function call
+  newRandomIame();
 
-// // query animate move 
-// var right = function(){
-//   newRandomIame();
-//   $(".imageone").animate({ "left": "100%" }, 4000, left );
+// query animate move 
+var right = function(){
+  newRandomIame();
+  $(".imageone").animate({ "left": "100%" }, 4000, left );
 
-// }
-// // still might need more work.. it should only move only one image at time
-// var left = function(){
-//   newRandomIame();
-//   $(".imageone").animate({ "left": "500px" }, 4000, right );
+}
+// still might need more work.. it should only move only one image at time
+var left = function(){
+  newRandomIame();
+  $(".imageone").animate({ "left": "100%" }, 4000, right );
   
-// }
+}
 
-// right();
+right();
 
-// });
+});
